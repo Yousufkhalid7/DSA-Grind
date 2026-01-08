@@ -1,0 +1,14 @@
+242.Valid Anagram
+Approach: Sorting
+
+Solution:
+class Solution(object):
+    def isAnagram(self, s, t):
+        sorted_s = sorted(s)
+        final_s = "".join(sorted_s)
+        sorted_t = sorted(t)
+        final_t = "".join(sorted_t)
+        if final_s == final_t:
+            return True
+        return False
+        
