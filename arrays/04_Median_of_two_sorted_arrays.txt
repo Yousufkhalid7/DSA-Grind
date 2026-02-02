@@ -1,0 +1,24 @@
+4. Median of Two Sorted Arrays
+Approach: Merging with 2 pointers
+
+Solution:
+class Solution(object):
+    def findMedianSortedArrays(self, nums1, nums2):
+        k = []
+        i= 0
+        j=0
+        while i < len(nums1) and j < len(nums2):
+            if nums1[i] < nums2[j]:
+                k.append(nums1[i])
+                i += 1
+            else:
+                k.append(nums2[j])
+                j += 1
+        k.extend(nums1[i:])
+        k.extend(nums2[j:])
+        mid = len(k)//2
+        if len(k) % 2 == 0:
+            return (k[mid] + k[mid-1]) / 2.0 
+        else:
+            return float(k[mid])
+            
