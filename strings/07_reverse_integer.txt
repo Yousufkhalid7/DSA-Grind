@@ -1,0 +1,19 @@
+7. Reverse Integer
+Approach: Remainder
+
+Solution:
+class Solution(object):
+    def reverse(self, x):
+        res = 0
+        checker = False
+        if x<0:
+            checker = True
+            x = x*(-1)
+        while x>0:
+            res = (res*10) + (x%10)
+            x//=10
+        if res > (2 ** 31) - 1:
+            return 0 
+        return res*(-1) if checker else res
+        
+        
