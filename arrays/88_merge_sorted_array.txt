@@ -1,0 +1,24 @@
+88. Merge Sorted Array
+Approach: Two Pointers
+
+Solution:
+class Solution(object):
+    def merge(self, nums1, m, nums2, n):
+        k = []
+        i=0
+        j=0
+        while i < m and j < n:
+            if nums1[i] <= nums2[j]:
+                k.append(nums1[i])
+                i += 1
+            else:
+                k.append(nums2[j])
+                j += 1
+        k.extend(nums2[j:n])
+        k.extend(nums1[i:m])
+        for x in range(m+n):
+            nums1[x] = k[x]
+
+        
+        
+            
