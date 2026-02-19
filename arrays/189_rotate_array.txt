@@ -1,0 +1,16 @@
+189. Rotate Array
+Approach: D&C
+
+Solution:
+class Solution(object):
+    def rotate(self, nums, k):
+        k = k % len(nums)
+        temp = nums[-k:]
+        for i in reversed(range(0, len(nums)-k)):
+            nums[i+k] = nums [i]
+        for j in range(0, k):
+            nums[j] = temp[j]          
+        return nums
+        
+        
+            
