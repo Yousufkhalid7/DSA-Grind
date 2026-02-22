@@ -1,0 +1,16 @@
+58. Length of Last Word
+Approach: Reverse Traversal
+
+Solution:
+class Solution(object):
+    def lengthOfLastWord(self, s):
+        count = 0
+        j = len(s) -1
+        while s[j] == " " and j>=0:
+            j-=1
+        while s[j]!= " " and j>=0:
+            count+=1
+            j-=1
+        return count
+
+        
