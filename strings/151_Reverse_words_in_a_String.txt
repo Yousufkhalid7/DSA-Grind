@@ -1,0 +1,9 @@
+151. Reverse Words in a String
+Approach: Split and join
+
+Solution:
+class Solution(object):
+    def reverseWords(self, s):
+        words = s.split()
+        words.reverse()
+        return " ".join(words)
