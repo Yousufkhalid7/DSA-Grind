@@ -1,0 +1,19 @@
+162. Find peak element
+Approach: Binary Search
+
+Solution:
+class Solution(object):
+    def findPeakElement(self, nums):
+        sort = sorted(nums)
+        peak = sort[-1]
+        i=0
+        j=len(nums)-1
+        if len(nums) == 1:
+            return 0
+        while i<=j:
+            if nums[i] == peak:
+                return i
+            elif nums[j] == peak:
+                return j
+            i += 1
+            j -= 1
