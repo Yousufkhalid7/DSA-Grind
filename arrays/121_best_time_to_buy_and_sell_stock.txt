@@ -1,0 +1,18 @@
+121. Best Time to Buy and Sell Stock
+Approach: Greedy Method
+
+#Start with the first element, then iterate through the array.
+#Compare the element to the iteration element and pick the minimum one
+#Find the profit my subtracting the current element by the minimum one
+#Compare the profit with the maximum profit and store the greater value
+
+Solution:
+class Solution(object):
+    def maxProfit(self, prices):
+        min_price = prices[0]
+        max_profit = 0
+        for price in prices:
+            min_price = min (min_price, price)
+            profit = price - min_price
+            max_profit = max ( profit, max_profit)
+        return max_profit
