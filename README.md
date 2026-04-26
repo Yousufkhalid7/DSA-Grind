@@ -1,26 +1,6 @@
 \# DSA Practice Repository
 
-
-
 This repository contains my structured practice of Data Structures and Algorithms.
-
-
-
-\## Topics Covered
-
-\- Arrays
-
-\- Strings
-
-\- Recursion
-
-\- Linked List
-
-\- Stack
-
-\- Queue
-
-
 
 \## Purpose
 
