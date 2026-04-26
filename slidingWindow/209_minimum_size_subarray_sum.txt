@@ -1,0 +1,37 @@
+209. Minimum Size Subarray Sum
+Approach: Greedy (Wrong) X Doesnt return continuous array(works only in lucky cases)
+
+Solution:
+class Solution(object):
+	def minSubArrayLen(self, target, nums):
+		nums.sort()
+		index = len(nums) - 1 
+		summ = 0 
+		count = 0 
+		while index != -1: 
+			summ += nums[index] 
+			count += 1 
+			if summ >= target: 
+				return count 
+			index -= 1 
+		return 0
+
+Approach: Sliding Window (Correct Approach)
+
+Solution:
+class Solution(object):
+    def minSubArrayLen(self, target, nums):
+        left = 0
+        summ = 0
+        length = float('inf')
+        for right in range(len(nums)):
+            summ += nums[right]
+            while summ >= target:
+                length = min(length, right - left + 1)
+                summ -= nums[left]
+                left += 1
+        if length == float('inf'):
+            return 0
+        else:
+            return length
+                
