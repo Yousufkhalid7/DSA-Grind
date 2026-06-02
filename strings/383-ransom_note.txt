@@ -1,0 +1,28 @@
+383. Ransom Note
+Approach: Hashmaps
+
+Solution:
+class Solution(object):
+    def canConstruct(self, ransomNote, magazine):
+        map1 = {}
+        map2 = {}
+        for letter in magazine:
+            if letter in map1:
+                map1[letter] += 1
+            else:
+                map1[letter] = 1
+        
+        for letter in ransomNote:
+            if letter in map2:
+                map2[letter] += 1
+            else:
+                map2[letter] = 1
+        
+        result = True
+        for count in map2:
+            if count not in map1 or map2[count] > map1[count]:
+                return False
+                break
+
+        return result
+                
