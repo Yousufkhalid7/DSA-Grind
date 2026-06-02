@@ -1,6 +1,7 @@
 \# DSA Practice Repository
 
 This repository contains my structured practice of Data Structures and Algorithms.
+Switching from Python to Java to achieve deeper understanding of the working of the algorithms and patterns
 
 \## Purpose
 
@@ -14,7 +15,7 @@ This repository contains my structured practice of Data Structures and Algorithm
 
 \## Language
 
-\- Python
+\- Java
 
 
 
