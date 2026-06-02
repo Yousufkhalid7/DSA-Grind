@@ -1,0 +1,12 @@
+1480. Running Sum of 1d Array
+Approach: Traversing
+
+Solution:
+class Solution(object):
+    def runningSum(self, nums):
+        sum = 0
+        for num in range(len(nums)):
+            sum += nums[num]
+            nums[num] = sum
+
+        return nums
