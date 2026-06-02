@@ -1,0 +1,24 @@
+290. Word Pattern
+Approach: Hashmaps
+
+Solution:
+class Solution(object):
+    def wordPattern(self, pattern, s):
+        map1 = {}
+        map2 = {}
+        words = s.split()
+        if len(words) != len(pattern):
+            return False
+        for ch,word in zip(pattern, words):
+            if ch in map1:
+                if map1[ch] != word:
+                    return False
+            
+            if word in map2:
+                if map2[word] != ch:
+                    return False
+            
+            map1[ch] = word
+            map2[word] = ch
+        
+        return True
