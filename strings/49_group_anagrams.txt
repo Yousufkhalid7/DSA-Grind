@@ -1,0 +1,16 @@
+49. Group Anagrams
+Approach: Hashmaps and sorting
+
+Solution:
+class Solution(object):
+    def groupAnagrams(self, strs):
+        hmap = {}
+        for word in strs:
+            key = ''.join(sorted(word))
+            if key not in hmap:
+                hmap[key] = []
+            hmap[key].append(word)
+        return list(hmap.values())
+        
+        
+        
