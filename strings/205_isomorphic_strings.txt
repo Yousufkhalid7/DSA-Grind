@@ -1,0 +1,21 @@
+205. Isomorphic Strings
+Approach: Hashmaps
+
+Solution:
+class Solution(object):
+    def isIsomorphic(self, s, t):
+        map1 = {}
+        map2 = {}
+        if len(s) != len(t):
+            return False
+        for i,j in zip(s,t):
+            if i in map1:
+                if map1[i] != j:
+                    return False
+            if j in map2:
+                if map2[j] != i:
+                    return False
+            map2[j] = i
+            map1[i] = j
+        return True
+        
