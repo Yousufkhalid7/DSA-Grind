@@ -1,0 +1,15 @@
+219. Contains Duplicate II
+Approach: Hashmaps
+
+Solution:
+class Solution(object):
+    def containsNearbyDuplicate(self, nums, k):
+        hmap = {}
+        for i in range(len(nums)):
+            if nums[i] in hmap:
+                j = hmap[nums[i]]
+                if ((i-j)<=k):
+                    return True
+            hmap[nums[i]] = i
+        return False
+        
