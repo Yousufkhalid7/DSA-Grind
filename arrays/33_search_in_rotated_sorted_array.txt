@@ -1,0 +1,32 @@
+33. Search in Rotated Sorted Array
+Approach: Binary Search
+
+##In rotated array, either the right or the left portion is sorted
+##So we check for each sides, and search for the element using binary search 
+
+Solution:
+class Solution(object):
+    def threeSum(self, nums):
+        result = []
+        nums.sort()
+        for i in range(len(nums)):
+            j = len(nums) - 1
+            k = i + 1
+            if i > 0 and nums[i] == nums[i - 1]:
+                continue
+            while k < j:
+                tsum = nums[i] + nums[j] + nums[k]
+                if tsum == 0:
+                    result.append([nums[i], nums[j], nums[k]])
+                    while k<j and nums[k] == nums[k+1]:
+                        k += 1
+                    while k<j and nums[j] == nums[j-1]:
+                        j -= 1
+                    k += 1
+                    j -= 1
+                elif tsum < 0:
+                    k += 1
+                else:
+                    j -= 1
+        return result
+        
