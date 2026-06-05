@@ -1,0 +1,29 @@
+202. Happy Number
+Approach: Hash checking while extracting digits using a for loop ( X -> Wrong Approach - Time Complexity  bad because for loop within a while loop )
+
+Solution:
+class Solution(object):
+    def isHappy(self, n):
+        not_happy = {}
+        while n != 1:
+            if n in not_happy:
+                return False
+            not_happy[n] = True
+            n = sum( int(d)**2 for d in str(n))
+        return n == 1
+
+Approach: Digit Extraction and hash checking ( Extract digits one by one )
+
+Solution:
+class Solution(object):
+    def isHappy(self, n):
+        not_happy = {}
+        while n != 1 and n not in not_happy:
+            digit_sum = 0
+            not_happy[n] = True
+            while n > 0:
+                digit = n % 10
+                digit_sum = digit_sum + (digit*digit)
+                n //= 10
+            n = digit_sum
+        return n == 1
