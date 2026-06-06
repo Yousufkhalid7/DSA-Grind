@@ -1,0 +1,15 @@
+153. Find Minimum in Rotated Sorted Array
+Approach: Binary Search ( we always have to find the left most element, its either in the left portion or the right portion )
+
+Solution:
+class Solution(object):
+    def findMin(self, nums):
+        l = 0
+        r = len(nums) - 1
+        while l<r:
+            mid = (l+r)//2
+            if nums[mid] > nums[r]:
+                l = mid + 1
+            else:
+                r = mid
+        return nums[l]
