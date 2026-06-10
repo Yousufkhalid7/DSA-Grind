@@ -1,0 +1,10 @@
+179. Largest Number
+Approach: Sorting with Greedy Method ( Convert to strings and multiply itself with 10 and compare, it will sort lexicographically ( character-by-character ) )
+
+Solution:
+class Solution(object):
+    def largestNumber(self, nums):
+        nums = list(map(str, nums))
+        nums.sort(key=lambda x: x*10, reverse=True)
+        result = ''.join(nums)
+        return '0' if result[0] == '0' else result
