@@ -1,0 +1,17 @@
+881. Boats to save people
+Approach: Greedy sorting ( heaviest always boards, lightest joins )
+
+Solution:
+class Solution(object):
+    def numRescueBoats(self, people, limit):
+        i = 0
+        j = len(people) - 1
+        boat = 0
+        people.sort(reverse = True)
+        while i <= j:
+            if people[i] + people[j] <= limit:
+                 j-=1
+            boat +=1 
+            i+=1
+        return boat
+            
