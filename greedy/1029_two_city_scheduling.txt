@@ -1,0 +1,14 @@
+1029. Two City Scheduling
+Approach: Greedy sorting on the difference between the costs (x[0]-x[1])
+
+Solution:
+class Solution(object):
+    def twoCitySchedCost(self, costs):
+        ocost = 0
+        costs.sort( key = lambda x: x[0]-x[1])
+        for i in range(len(costs)):
+            if i < len(costs)/2:
+                ocost += costs[i][0]
+            else:
+                ocost += costs[i][1]
+        return ocost
