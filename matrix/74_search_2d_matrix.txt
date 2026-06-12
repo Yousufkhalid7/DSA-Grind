@@ -1,0 +1,33 @@
+74. Search a 2D Matrix
+Approach: Binary Search (First search relevant rows, then search that row )
+
+Solution:
+class Solution(object):
+    def searchMatrix(self, matrix, target):
+        rows = len(matrix)
+        columns = len(matrix[0])
+        top = 0
+        bottom = rows - 1
+        while top <= bottom:
+            middle = (top+bottom)//2
+            if target < matrix[middle][0]:
+                bottom = middle - 1
+            elif target > matrix[middle][columns-1]:
+                top = middle + 1
+            else:
+                break
+        if top > bottom:
+            return False
+        left = 0 
+        right = columns - 1
+        while left <= right:
+            val_middle = (left+right)//2
+            if matrix[middle][val_middle] == target:
+                return True
+            elif matrix[middle][val_middle] > target:
+                right = val_middle - 1
+            else:
+                left = val_middle + 1
+        return False
+                
+
