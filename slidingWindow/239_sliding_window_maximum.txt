@@ -1,0 +1,43 @@
+239. Sliding Window Maximum
+Approach: Dequeue ( Separate check for first window, then check the rest windows )
+
+Solution:
+from collections import deque
+class Solution(object):
+    def maxSlidingWindow(self, nums, k):
+        dq = deque()
+        output = []
+        for i in range(k):
+            while dq and nums[i] >= nums[dq[-1]]:
+                dq.pop()
+            dq.append(i)
+        output.append(nums[dq[0]])
+
+        for i in range(k, len(nums)):
+            if dq and dq[0] <= i-k:
+                dq.popleft()
+            while dq and nums[i] >= nums[dq[-1]]:
+                dq.pop()
+            dq.append(i)
+            output.append(nums[dq[0]])
+        return output
+
+Approach: Sliding Window ( X -> Wrong because the time complexity is too large for very large k, O k(n-k+1)
+
+Solution:
+class Solution(object):
+    def maxSlidingWindow(self, nums, k):
+        i = 0
+        j = k-1
+        res =[]
+        max_no = nums[0]
+        while j < len(nums):
+            max_no = nums[i]
+            temp = i
+            while temp <= j:
+                max_no = max(max_no, nums[temp])
+                temp += 1
+            res.append(max_no)
+            i+=1
+            j+=1
+        return res 
