@@ -1,0 +1,15 @@
+144. Binary Tree Preorder Traversal
+Approach: Push Current -> Left -> Right
+
+Solution:
+class Solution(object):
+    def preorderTraversal(self, root):
+        result =[]
+        def preorder(node):
+            if not node:
+                return
+            result.append(node.val)
+            preorder(node.left)
+            preorder(node.right)
+        preorder(root)
+        return result
