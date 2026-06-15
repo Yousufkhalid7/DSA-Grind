@@ -1,0 +1,20 @@
+113. Path Sum 2
+Approach: Check every branch till leaf node and backtrack
+
+Solution:
+class Solution(object):
+    def pathSum(self, root, targetSum):
+        result = []
+        def helper(node, curr, rem_sum):
+            if node is None:
+                return result
+            curr.append(node.val)
+            if rem_sum == node.val and node.left is None and node.right is None:
+                result.append(curr[:])
+            else:
+                helper(node.left, curr, rem_sum - node.val)
+                helper(node.right, curr, rem_sum - node.val)
+            curr.pop()
+        helper(root, [], targetSum)
+        return result
+              
