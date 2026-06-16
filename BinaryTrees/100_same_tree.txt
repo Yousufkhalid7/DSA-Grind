@@ -1,0 +1,15 @@
+100. Same Tree
+Approach: Recursion
+
+Solution:
+class Solution(object):
+    def isSameTree(self, p, q):
+        def helper(left, right):
+            if left is None and right is None:
+                return True
+            if left is None or right is None:
+                return False
+            if left.val != right.val:
+                return False
+            return helper(left.left, right.left) and helper(left.right, right.right)
+        return helper(p, q)
