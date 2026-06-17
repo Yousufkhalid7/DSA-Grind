@@ -1,0 +1,13 @@
+222. Count Complete Tree Nodes
+Approach: Recursion of left and right separately ( return automatically increases the value and add 1 for the node)
+
+Solution:
+class Solution(object):
+    def countNodes(self, root):
+        if root is None:
+            return 0
+        ncount = 0
+        ncount = self.countNodes(root.left)
+        ncount += self.countNodes(root.right)
+        return 1 + ncount
+        
