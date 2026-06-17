@@ -1,0 +1,35 @@
+36. Valid Sudoku
+Approach: Divide the 9x9 into 3x3
+
+Solution:
+class Solution(object):
+    def isValidSudoku(self, board):
+        for row in board:
+            nums = [x for x in row if x!="."]
+            if len(nums) != len(set(nums)):
+                return False
+        
+        for col in range(9):
+            nums = []
+            for row in range(9):
+                if board[row][col] != ".":
+                    nums.append(board[row][col])
+            if len(nums) != len(set(nums)):
+                return False
+            
+        #for 3x3
+        for row in range(0,9,3):
+            for col in range(0,9,3):
+                nums = []
+                for brow in range(row, row+3):
+                    for bcol in range(col, col+3):
+                        if board[brow][bcol] != ".":
+                            nums.append(board[brow][bcol])
+                if len(nums) != len(set(nums)):
+                    return False
+        return True
+
+
+        
+        
+        return True
