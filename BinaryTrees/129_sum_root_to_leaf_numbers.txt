@@ -1,0 +1,17 @@
+129. Sum Root to Leaf Numbers
+Approach: To calculate sum from node-to-node use: number*10 + value (Ex: 1 -> 2, 1*10 + 2 = 12)
+
+Solution:
+class Solution(object):
+    def sumNumbers(self, root):
+        def dfs(node, num):
+            if not node:
+                return 0
+            num = num*10 + node.val
+            if not node.left and not node.right:
+                return num
+            return(dfs(node.left, num) + dfs(node.right, num))
+        return dfs(root, 0)
+
+
+
