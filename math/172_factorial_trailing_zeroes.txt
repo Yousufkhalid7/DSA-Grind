@@ -1,0 +1,16 @@
+172. Factorial Trailing Zeroes
+Approach: When calculating factorials, multiples of 5 always have trailing 0.
+N<5 -> No zeroes
+5<N<10 -> 1 zero .....
+
+Solution:
+class Solution(object):
+    def trailingZeroes(self, n):
+        zeroes = 0
+        while n:
+            n//=5
+            zeroes += n
+        return zeroes
+
+
+
