@@ -19,6 +19,19 @@ class Solution(object):
         if count > check:
             result.append(nums[-1])
         return result
-
-
-
+Approach: Hash Frequency Count ( BETTER )
+Solution:
+class Solution(object):
+    def majorityElement(self, nums):
+        hmap = {}
+        for num in nums:
+            if num in hmap:
+                hmap[num] += 1
+            else:
+                hmap[num] = 1
+        result = []
+        check = len(nums)//3
+        for key in hmap:
+            if hmap[key] > check:
+                result.append(key)
+        return result
