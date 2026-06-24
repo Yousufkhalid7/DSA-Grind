@@ -1,0 +1,28 @@
+81. Search in Rotated Sorted Array ||
+Approach: Left-sorted or Right-sorted and check for duplicates using Binary Search
+
+Solution:
+class Solution(object):
+    def search(self, nums, target):
+        i = 0 
+        j = len(nums) - 1
+        while i <= j:
+            mid = (i + j) // 2
+            if nums[mid] == target:
+                return True
+            if nums[i] == nums[mid] == nums[j]:
+                i += 1
+                j -= 1
+                continue
+            if nums[i] <= nums[mid]:
+                if nums[i] <= target < nums[mid]:
+                    j = mid - 1
+                else:
+                    i = mid + 1  
+            else:
+                if nums[j] >= target > nums[mid]:
+                    i = mid + 1
+                else:
+                    j = mid - 1
+        return False
+        
