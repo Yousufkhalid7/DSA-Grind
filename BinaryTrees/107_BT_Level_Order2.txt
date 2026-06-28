@@ -1,0 +1,28 @@
+107. Binary Tree Level Order Traversal ||
+Approach: Breadth First Search
+
+Solution:
+from collections import deque
+class Solution(object):
+    def levelOrderBottom(self, root):
+        result = []
+        if root is None:
+            return result
+        queue = deque([root])
+        while queue:
+            len_level = len(queue)
+            level = []
+            for i in range(len_level):
+                node = queue.popleft()
+                level.append(node.val)
+                if node.left:
+                    queue.append(node.left)
+                if node.right:
+                    queue.append(node.right)
+            result.append(level)
+        result.reverse()
+        return result
+        
+        
+                
+        
