@@ -1,0 +1,20 @@
+230. kTH Smallest element in a BST
+Approach: Inorder Traversal
+
+Solution:
+class Solution(object):
+    def __init__(self):
+        self.slist = []
+
+    def inorder(self, root):
+        if not root:
+            return
+
+        self.inorder(root.left)
+        self.slist.append(root.val)
+        self.inorder(root.right)
+
+    def kthSmallest(self, root, k):
+        self.slist = []
+        self.inorder(root)
+        return self.slist[k-1]
