@@ -1,0 +1,22 @@
+199. Binary Tree Right Side View
+Approach: Breadth First Search and Queue
+
+Solution:
+from collections import deque
+class Solution(object):
+    def rightSideView(self, root):
+        result = []
+        if root is None:
+            return []
+        queue = deque([root])
+        while queue:
+            result.append(queue[-1].val)
+            levels = len(queue)
+            for i in range(levels):
+                node = queue.popleft()
+                if node.left:
+                    queue.append(node.left)
+                if node.right:
+                    queue.append(node.right) 
+        return result
+        
