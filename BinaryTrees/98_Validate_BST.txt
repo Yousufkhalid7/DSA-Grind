@@ -1,0 +1,22 @@
+98. Validate BST
+Approach: Inorder Traversal Check
+
+Solution:
+class Solution(object):
+    def isValidBST(self, root):
+        if root is None:
+            return None
+        inorder = []
+        def bst(node):
+            if node is None:
+                return
+            bst(node.left)
+            inorder.append(node.val)
+            bst(node.right)
+        bst(root)
+        for i in range(1, len(inorder)):
+            if inorder[i] <= inorder[i-1]:
+                return False
+        return True
+
+        
