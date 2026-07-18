@@ -1,0 +1,17 @@
+46. Permutations
+Approach: Backtracking
+
+Solution:
+class Solution(object):
+    def permute(self, nums):
+        result = []
+	n = len(nums)
+	def perm(index):
+		if index == n-1:
+			result.append(nums[:])
+			return
+		nums[index], nums[j] = nums[j], nums[index]
+		perm(index+1)
+		nums[index], nums[j] = nums[j], nums[index]
+	perm(0)
+	return result
