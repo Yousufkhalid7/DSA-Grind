@@ -1,0 +1,21 @@
+3997. Count Dominant Nodes in a Binary Tree
+Approach: Depth First Search
+
+Solution:
+class Solution(object):
+    def countDominantNodes(self, root):
+        self.ans = 0
+        def dfs(node):
+            if not node:
+                return float('-inf')
+            leftMax = dfs(node.left)
+            rightMax = dfs(node.right)
+            subtreeMax = max(node.val, leftMax, rightMax)
+            if node.val == subtreeMax:
+                self.ans += 1
+            return subtreeMax
+        dfs(root)
+        return self.ans
+
+            
+        
