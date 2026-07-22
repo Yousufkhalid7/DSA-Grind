@@ -1,0 +1,22 @@
+47. Permutations ||
+Approach: Backtracking
+
+Solution:
+class Solution(object):
+    def permuteUnique(self, nums):
+        result = []
+        nums.sort()
+        def perm(index):
+            used = set()
+            if index == len(nums):
+                result.append(nums[:])
+                return
+            for i in range(index, len(nums)):
+                if nums[i] in used:
+                    continue
+                used.add(nums[i])
+                nums[i], nums[index] = nums[index], nums[i]
+                perm(index+1)
+                nums[i], nums[index] = nums[index], nums[i]
+        perm(0)
+        return result
