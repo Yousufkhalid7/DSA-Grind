@@ -1,0 +1,23 @@
+40. Combination Sum 2
+Approach: Backtracing
+
+Solution:
+class Solution(object):
+    def combinationSum(self, candidates, target):
+        candidates.sort()
+	result = []
+	current =[]
+	def dfs(index, total):
+		if total > target:
+			return
+		if total == target:
+			result.append(current[:])
+
+		for i in range(index, len(candidates):
+			if i > index and candidates[i] == candidates[i-1]:
+				continue
+			current.append(candidates[i])
+			dfs(i+1, total += candidates[i])
+			current.pop()                    
+        dfs(0, 0)
+	return result
