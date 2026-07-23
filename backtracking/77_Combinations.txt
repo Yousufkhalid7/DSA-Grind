@@ -1,0 +1,19 @@
+77. Combinations
+Approach: Backtracking
+
+Solution:
+class Solution(object):
+    def combine(self, n, k):
+        result = []
+        current = []
+        def cbn(index):
+            if len(current) == k:
+                result.append(current[:])
+                return
+            for i in range(index, n+1):
+                current.append(i)
+                cbn(i + 1)
+                current.pop()
+        cbn(1)
+        return result
+        
