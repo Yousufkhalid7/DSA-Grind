@@ -1,0 +1,10 @@
+3536. Maximum Product of Two Digits
+Approach: Sorting
+
+Solution:
+class Solution(object):
+    def maxProduct(self, n):
+        prod = 1
+        sorted_num = sorted(str(n), reverse = True)
+        return int(sorted_num[0]) * int(sorted_num[1])
+        
