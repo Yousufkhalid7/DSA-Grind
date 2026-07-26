@@ -1,0 +1,22 @@
+216. Combination Sum 3
+Approach: Backtracking
+
+Solution:
+class Solution(object):
+    def combinationSum3(self, k, n):
+        result = []
+        current = []
+        def csum(index, total):
+            if total == n and len(current) == k:
+                result.append(current[:])
+                return
+            if len(current) > k or total > n:
+                return
+            for i in range(index, 10):
+                current.append(i)
+                csum(i + 1, total + i)
+                current.pop()
+        csum(1, 0)
+        return result
+            
+        
