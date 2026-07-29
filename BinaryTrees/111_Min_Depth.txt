@@ -1,0 +1,13 @@
+111. Minimum Depth of Binary Tree
+Approach: Depth First Search
+
+Solution:
+class Solution(object):
+    def minDepth(self, root):
+        if root is None:
+		return 0
+	if self.minDepth(root.left) is None:
+		return 1 + self.minDept(root.right)
+	if self.minDepth(root.right) is None:
+		return 1 + self.minDepth(root.right)
+	return 1 + min(self.minDepth(root.left), self.minDepth(root.right)
