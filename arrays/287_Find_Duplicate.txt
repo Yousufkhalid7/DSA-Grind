@@ -1,0 +1,12 @@
+287. Find the Duplicate Number
+Approach: Hashing
+
+Solution:
+class Solution(object):
+    def findDuplicate(self, nums):
+        hmap = {}
+        for num in nums:
+            if num in hmap:
+                return num
+            hmap[num] = True
+        
