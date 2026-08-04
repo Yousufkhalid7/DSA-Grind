@@ -1,0 +1,17 @@
+235. Lowest Common Ancestor of a BST
+Approach: Recursion
+
+Solution:
+class Solution(object):
+    def lowestCommonAncestor(self, root, p, q):
+        def check(node):
+            if p.val < node.val and q.val < node.val:
+                #left
+                return check(node.left)
+            if p.val > node.val and q.val > node.val:
+                #right
+                return check(node.right)
+            else:
+                #one - left, one - right
+                return node
+        return check(root)
