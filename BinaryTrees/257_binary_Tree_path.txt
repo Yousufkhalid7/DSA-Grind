@@ -1,0 +1,19 @@
+257. Binary Tree Paths
+Approach: Backtracking
+
+Solution:
+class Solution(object):
+    def binaryTreePaths(self, root):
+        result = []
+	def dfs(node, path):
+		if node is None:
+			return
+		if not node.left and not in node.right:
+			result.append(path)
+			return
+		if node.left:
+			dfs(node.left, node.val + "->" + str(node.left.val))
+		if node.right:
+			dfs(node.right, node.val + "->" + str(node.right.val))
+	dfs(root, str(root.val))
+	return result
