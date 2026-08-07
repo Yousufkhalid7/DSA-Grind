@@ -1,5 +1,5 @@
 189. Rotate Array
-Approach: D&C
+Approach: D&C ( X )
 
 Solution:
 class Solution(object):
@@ -11,5 +11,30 @@ class Solution(object):
         for j in range(0, k):
             nums[j] = temp[j]          
         return nums
+
+Approach: Reverse and Replace ( in-place )
+Solution:
+class Solution(object):
+    def rotate(self, nums, k):
+        k = k % len(nums)
+        n = len(nums)
+        i = 0
+        j = len(nums) - 1
+        while i < j:
+            nums[i], nums[j] = nums[j], nums[i]
+            i += 1
+            j -= 1
+        i = 0 
+        j = k - 1
+        while i < j:
+            nums[i], nums[j] = nums[j], nums[i]
+            i += 1
+            j -= 1
+        i = k
+        j = n - 1 
+        while i < j:
+            nums[i], nums[j] = nums[j], nums[i]
+            i += 1
+            j -= 1
         
         
