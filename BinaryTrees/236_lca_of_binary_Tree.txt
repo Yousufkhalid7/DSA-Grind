@@ -1,0 +1,15 @@
+236. Lowest Common Ancestor of a Binary Tree
+Approach: Post-order
+
+Solution:
+class Solution(object):
+    def lowestCommonAncestor(self, root, p, q):
+        if root is None:
+		return None
+	if root == p or root == q:
+		return root
+	self.lowestCommonAncestor(root.left, p, q)
+	self.lowestCommonAncestor(root.right, p, q)
+	if left and right:
+		return root
+	return left if left else right
