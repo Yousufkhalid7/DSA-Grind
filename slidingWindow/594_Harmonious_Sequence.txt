@@ -1,0 +1,16 @@
+594. Longest Harmonious Subsequence
+Approach: Sliding Window + Sorting
+
+Solution:
+class Solution(object):
+    def findLHS(self, nums):
+        nums.sort()
+	start = 0
+	max_count = 0
+	for end in range(len(nums)):
+		while nums[end] - nums[start] > 1:
+			start += 1
+		if nums[end] - nums[start] == 1:
+			max_count = max( max_count, right - left + 1)
+	return max_count
+        
