@@ -1,0 +1,26 @@
+22. Generate Parentheses
+Approach: Backtracking
+
+Solution:
+class Solution(object):
+    def generateParenthesis(self, n):
+        result = []
+        current = []
+        def backtrack(openp, closedp):
+            if openp == closedp == n:
+                result.append("".join(current))
+                return result
+            
+            if openp < n:
+                current.append("(")
+                backtrack(openp + 1, closedp)
+                current.pop()
+            
+            if closedp < openp:
+                current.append(")")
+                backtrack(openp, closedp + 1)
+                current.pop()
+
+        backtrack(0, 0)
+        return result
+        
