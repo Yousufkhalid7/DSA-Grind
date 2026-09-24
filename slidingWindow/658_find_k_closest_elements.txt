@@ -1,0 +1,13 @@
+658. Find K Closest Elements
+Approach: Fixed Sliding Window
+
+Solution:
+class Solution(object):
+    def findClosestElements(self, arr, k, x):
+        left = 0
+        while left < len(arr) - k:
+            if x - arr[left] > arr[left + k] - x:
+                left += 1       
+            else:
+                break
+        return arr[left:left + k]
