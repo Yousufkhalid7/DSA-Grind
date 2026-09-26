@@ -1,0 +1,19 @@
+424. Longest Repeating Character Development
+Approach: Sliding Window ( Expand right, then shrink the window from left )
+
+Solution:
+class Solution(object):
+    def characterReplacement(self, s, k):
+        hmap = {}
+        left = 0
+        result = 0
+        for right in range(len(s)):
+            if s[right] not in hmap:
+                hmap[s[right]] = 1
+            else:
+                hmap[s[right]] += 1
+            while (right - left + 1) - max(hmap.values()) > k:
+                hmap[s[left]] -= 1
+                left += 1
+            result = max(result, right - left + 1)
+        return result
