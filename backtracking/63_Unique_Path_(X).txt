@@ -1,0 +1,22 @@
+71. Unique Paths 2
+Approach: Recursion ( X - Time Limit Exceeded -> Can be solved using DP )
+
+Solution:
+class Solution(object):
+    def uniquePathsWithObstacles(self, obstacleGrid):
+        count = [0]
+        row = len(obstacleGrid)
+        col = len(obstacleGrid[0])
+        def helper(r, c):
+            if obstacleGrid[r][c] == 1:
+                return
+            if (r == (row - 1)) and (c == (col - 1)):
+                count[0] += 1
+                return
+            if r + 1 < row:
+                helper(r + 1, c)
+            if c + 1 < col:
+                helper(r, c + 1)
+        helper(0, 0)
+        return count[0]
+        
