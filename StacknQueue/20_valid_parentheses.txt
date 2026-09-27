@@ -1,0 +1,22 @@
+20. Valid Parentheses
+Approach: Stack ( Every key is a closing bracket, what we check to ensure closing has an opening before it )
+
+Solution:
+class Solution(object):
+    def isValid(self, s):
+        stack = []
+        hmap = {
+            ")": "(",
+            "}": "{",
+            "]": "["
+            }
+        for ch in s:
+            if ch in hmap:
+                if stack and stack[-1] == hmap[ch]:
+                    stack.pop()
+                else:
+                    return False
+            else:
+                stack.append(ch)
+        return True if not stack else False
+        
