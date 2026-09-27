@@ -1,0 +1,14 @@
+739.Daily Temperatures
+Approach: Stack ( Store index and temperature while popping )
+
+Solution:
+class Solution(object):
+    def dailyTemperatures(self, temperatures):
+        result = [0]*len(temperatures)
+        stack = []
+        for index, temp in enumerate(temperatures):
+            while stack and temp > stack[-1][0]:
+                stacktemp, stackindex = stack.pop()
+                result[stackindex] = index - stackindex
+            stack.append([temp, index])
+        return result
