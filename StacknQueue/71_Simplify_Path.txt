@@ -1,0 +1,19 @@
+71. Simplify Path
+Approach: Stack ( Split the directory into parts defined by  "/" , then work on every part separately )
+
+Solution:
+class Solution(object):
+    def simplifyPath(self, path):
+        stack = []
+        part = path.split("/")
+        for p in part:
+            if p == "..":
+                if stack:
+                    stack.pop()
+            elif p == "" or p == ".":
+                continue
+            else:
+                stack.append(p)
+        return "/" + "/".join(stack)
+
+        
